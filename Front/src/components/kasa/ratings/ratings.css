@@ -1,0 +1,20 @@
+.rating{
+    width: 30px;
+    margin-top: 24px;
+    margin-left: 10px;
+}
+
+@media all and (max-width : 706px) {
+    .rating{
+        width: 23px;
+        margin-left: 5px;
+    }
+}
+
+@media all and (max-width : 549px) {
+    .rating{
+        width: 15px;
+        margin-right: 5px;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,65 @@
+.containerHomeBanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 63px;
+  max-width: 1240px;
+  width: 100%;
+  background-color: black;
+  mix-blend-mode: darken;
+  border-radius: 25px;
+}
+
+.textHomeBanner {
+  position: absolute;
+  font-size: 48px;
+  color: white;
+  z-index: 1;
+}
+
+.homeBanner {
+  width: 100%;
+  height: 223px;
+  border-radius: 25px;
+  opacity: 0.7;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 50px 20px;
+  background: #f7f7f7;
+  max-width: 1240px;
+  width: 100%;
+  border-radius: 25px;
+  margin-top: 43px;
+  padding: 56px 50px 43px 50px;
+  z-index: 0;
+}
+
+@media all and (max-width: 839px) {
+  .containerHomeBanner {
+    margin-top: 16px;
+    border-radius: 10px;
+  }
+
+  .textHomeBanner {
+    margin-left: 36px;
+    margin-right: 36px;
+    font-size: 24px;
+  }
+
+  .homeBanner {
+    height: 111px;
+    border-radius: 10px;
+  }
+
+  .gallery {
+    gap: 20px;
+    background: white;
+    border-radius: 0;
+    margin: 20px 0px;
+    padding: 0;
+  }
+}

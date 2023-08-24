@@ -1,0 +1,211 @@
+@font-face {
+  font-family: et-line;
+  src: url(../../assets/panthere/fonts/et-line.eot);
+  src: url(../../assets/panthere/fonts/et-line.eot?#iefix)
+      format("embedded-opentype"),
+    url(../../assets/panthere/fonts/et-line.woff) format("woff"),
+    url(../../assets/panthere/fonts/et-line.ttf) format("truetype"),
+    url(../../assets/panthere/fonts/et-line.svg#et-line) format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.panthere_header {
+  font-family: "helvetica";
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  max-width: 1440px;
+  width: 100%;
+  min-height: 90px;
+  line-height: 1.428;
+}
+
+.panthere_header_logo {
+  width: 250px;
+  height: 50px;
+}
+
+.panthere_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.panthere_nav_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+#nav-toggle {
+  border: none;
+  background-color: black;
+  margin-right: 30px;
+}
+
+.panthere_ul {
+  display: flex;
+}
+
+.panthere_header .panthere_li {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  list-style: none;
+  transition: all ease-in-out 300ms;
+}
+
+.panthere_header .panthere_li:hover {
+  background: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.panthere_header .panthere_li:hover .panthere_a {
+  color: black;
+}
+
+.panthere_a {
+  font-weight: 400;
+  margin: 0px 15px;
+  text-decoration: none;
+  color: #f3976c;
+}
+
+.panthere_main {
+  font-family: "helvetica";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  max-width: 1440px;
+  width: 100%;
+  line-height: 1.428;
+}
+
+.panthere_button_scrollToTop {
+  cursor: pointer;
+  font-size: 14px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #f3976c;
+  color: black;
+  border: none;
+  border-radius: 4px;
+}
+.panthere_footer {
+  font-family: "helvetica";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1440px;
+  width: 100%;
+  background-color: black;
+  color: #f3976c;
+  padding: 20px 0px;
+  line-height: 1.428;
+}
+
+.panthere_footer_h2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.panthere_address {
+  text-align: center;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.panthere_footer_socialLink {
+  display: flex;
+  justify-content: space-around;
+  max-width: 400px;
+  width: 100%;
+}
+
+.panthere_footer_social {
+  display: flex;
+  font-size: 30px;
+  color: #f3976c;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.panthere_footer_social:hover {
+  background: white;
+  color: black;
+  border-radius: 10px;
+}
+
+@media all and (min-width: 768px) {
+  #nav-toggle {
+    display: none;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .panthere_burger {
+    cursor: pointer;
+    background-color: black;
+    color: #f3976c;
+    border: none;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .panthere_burger:hover {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+  }
+
+  .panthere_nav {
+    flex-wrap: wrap;
+  }
+
+  .panthere_nav_div {
+    min-height: 90px;
+  }
+
+  .panthere_ul {
+    flex-direction: column;
+    width: 100%;
+    margin-right: 10px;
+  }
+
+  .panthere_li {
+    min-height: 58px;
+    margin-bottom: 5px;
+  }
+
+  .hide_ul {
+    height: 0px;
+  }
+
+  .panthere_footer {
+    padding: 20px 10px;
+  }
+
+  .panthere_footer_h2 {
+    max-width: 450px;
+    padding: 0px 10px;
+  }
+}

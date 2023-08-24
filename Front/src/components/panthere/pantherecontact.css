@@ -1,0 +1,86 @@
+#bloc-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  max-width: 1000px;
+  padding: 50px 0px;
+  color: black;
+}
+
+.panthere_bloc6_h1 {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.panthere_bloc6_p {
+  text-align: center;
+}
+
+#bloc-7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  color: black;
+}
+
+.panthere_bloc7_div {
+  font-size: 14px;
+  width: 100%;
+  padding: 50px 0px;
+}
+
+.panthere_bloc7_h2 {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.panthere_form_group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.panthere_input {
+  border-color: rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.panthere_button_submit {
+  background-color: black;
+  color: #f3976c;
+  border: 1px solid white;
+  margin-bottom: 22px;
+  border-radius: 6px;
+  padding: 12px 28px 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all ease-in-out 300ms;
+}
+
+.panthere_button_submit:hover {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+@media all and (max-width: 1000px) {
+  #bloc-6 {
+    padding: 50px 10px;
+  }
+
+  #bloc-7 {
+    padding: 0px 10px;
+  }
+}

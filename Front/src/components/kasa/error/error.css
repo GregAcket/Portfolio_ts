@@ -1,0 +1,53 @@
+.error-page{
+    color: #FF6060;
+}
+
+.error-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1280px;
+    width: 100%;
+    align-items: center;
+    color: #FF6060;
+}
+
+.error-link{
+    text-decoration-line: underline;
+    font-size: 18px;
+}
+
+.error{
+    font-weight: 700;
+    font-size: 288px;
+    margin-top: 169px;
+}
+
+.errorText{
+    margin-top: 66px;
+    margin-bottom: 182px;
+    font-size: 36px;
+    text-align: center;
+}
+
+.error-section a{
+    color: #FF6060;
+}
+
+@media all and (max-width : 839px){
+    .error-link{
+        font-size: 14px;
+    }
+    
+    .error{
+        font-size: 96px;
+        margin-top: 195px;
+    }
+    
+    .errorText{
+        margin-top: 11px;
+        margin-bottom: 133px;
+        font-size: 18px;
+    }
+
+}

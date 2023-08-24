@@ -1,0 +1,25 @@
+.kasa_footer {
+  font-family: -apple-system, "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  max-width: 1440px;
+  width: 100%;
+  height: 209px;
+}
+
+.kasa_footer p {
+  margin-top: 28px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+@media all and (max-width: 549px) {
+  .kasa_footer p {
+    margin-top: 39px;
+    font-size: 12px;
+  }
+}

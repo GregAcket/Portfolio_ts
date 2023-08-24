@@ -1,0 +1,74 @@
+.Kasa_header {
+  font-family: -apple-system, "Montserrat", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  height: 90px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: white;
+}
+
+.kasa_header_ul {
+  display: flex;
+  font-size: 24px;
+}
+
+.kasa_header_a {
+  color: #ff6060;
+}
+
+.kasa_header_li {
+  list-style: none;
+}
+
+.accueil {
+  text-decoration: none;
+}
+
+.accueilActive {
+  border-bottom: 2px solid #ff6060;
+  text-decoration: none;
+}
+
+.apropos {
+  margin-left: 57px;
+  text-decoration: none;
+}
+
+.aproposActive {
+  margin-left: 57px;
+  border-bottom: 2px solid #ff6060;
+  text-decoration: none;
+}
+
+@media all and (max-width: 549px) {
+  .Kasa_header {
+    height: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .kasa_header_ul {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .kasa_header_a {
+    height: 47px;
+  }
+
+  .kasa_header_img {
+    height: 47px;
+  }
+
+  .apropos {
+    margin-left: 10px;
+  }
+
+  .aproposActive {
+    margin-left: 10px;
+  }
+}

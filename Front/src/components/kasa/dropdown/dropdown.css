@@ -1,0 +1,78 @@
+.DropdownButton article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1023px;
+  width: 100%;
+  height: 47px;
+  background-color: #ff6060;
+  color: white;
+  border-radius: 5px;
+}
+
+.DropdownButton p {
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.DropdownButton img {
+  margin-right: 17px;
+}
+
+.text {
+  background-color: #f7f7f7;
+  color: #ff6060;
+  max-width: 1023px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 40px 12px 27px 20px;
+  font-size: 18px;
+}
+
+.DropdownButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1023px;
+  width: 100%;
+  height: 47px;
+  margin-top: 30px;
+  color: white;
+  background-color: #ff6060;
+  border: none;
+  padding: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.up {
+  transform: rotate(180deg);
+}
+
+@media all and (max-width: 549px) {
+  .DropdownButton {
+    height: 30px;
+    margin-top: 20px;
+  }
+
+  .DropdownButton article {
+    height: 30px;
+  }
+
+  .DropdownButton p {
+    margin-left: 11px;
+    font-size: 13px;
+  }
+
+  .DropdownButton img {
+    width: 9px;
+    height: 15px;
+    margin-right: 11px;
+  }
+
+  .text {
+    padding: 17px 7px 27px 11px;
+    font-size: 12px;
+  }
+}

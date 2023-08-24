@@ -1,0 +1,147 @@
+.kasa_logement_aside {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 76px;
+  width: 100%;
+  background: white;
+  margin-bottom: 20px;
+}
+
+.rentalIdentity {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #ff6060;
+}
+
+.place {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.rentalTitle {
+  font-size: 36px;
+  margin: 0px;
+}
+
+.rentalPlace {
+  font-size: 18px;
+  margin: 0px;
+}
+
+.tagWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.host {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 25px;
+  margin-right: 10px;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ff6060;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.renterPicture {
+  border-radius: 50%;
+  width: 64px;
+  margin-left: 10px;
+}
+
+.renterName {
+  width: 70px;
+  text-align: right;
+}
+
+.rates {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+@media all and (max-width: 706px) {
+  .rentalTitle {
+    font-size: 27px;
+  }
+
+  .tag {
+    font-size: 12px;
+  }
+}
+
+@media all and (max-width: 590px) {
+  .tag {
+    font-size: 10px;
+  }
+}
+
+@media all and (max-width: 549px) {
+  .kasa_logement_aside {
+    display: block;
+  }
+
+  .rentalIdentity {
+    flex-direction: column;
+  }
+
+  .place {
+    justify-content: flex-start;
+  }
+
+  .rentalTitle {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .hostAndRate {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .rentalPlace {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .host {
+    max-width: 135px;
+    margin-top: 16px;
+  }
+
+  .renterPicture {
+    width: 32px;
+    height: 32px;
+  }
+
+  .renterName {
+    width: 50px;
+    font-size: 12px;
+  }
+
+  .tag {
+    min-width: 84px;
+    height: 18px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+}
