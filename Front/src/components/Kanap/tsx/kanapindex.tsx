@@ -10,7 +10,7 @@ export default function Kanapindex() {
 
   //EFFECT
 
-  const url = "https://kanap.greg-dev.com/products"
+  const url = "http://localhost:8000/kanap"
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +27,7 @@ export default function Kanapindex() {
 
   let products = kanapData?.map((produit) => {
     return (
-      <Link to={"/project/kanap/product/" + produit._id} key={produit._id}>
+      <Link to={"/project/kanap/" + produit.id} key={produit.id}>
         <article>
           <img src={produit.imageUrl} alt={produit.altTxt} />
           <h3 className="productName">{produit.name}</h3>

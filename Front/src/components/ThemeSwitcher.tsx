@@ -22,16 +22,15 @@ const StyledButton = styled.button<ThemeProps>`
 `
 
 const Switch = styled.span<ThemeProps>`
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   content: "";
-  position: absolute;
   top: 2px;
   left: ${({ $isChecked }) => ($isChecked ? "calc(100% - 2px)" : "2px")};
   transform: ${({ $isChecked }) =>
     $isChecked ? "translateX(-100%)" : "translateX(0%)"};
-
   width: 25px;
   height: 25px;
   border-radius: 50%;

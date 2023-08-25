@@ -47,7 +47,7 @@ const router = createBrowserRouter(
           <Route path="/project/kanap" element={<Kanap />}>
             <Route path="/project/kanap" element={<Kanapindex />} />
             <Route
-              path="/project/kanap/product/:id"
+              path="/project/kanap/:id"
               element={<Kanapproduct />}
               errorElement={<Error />}
             />

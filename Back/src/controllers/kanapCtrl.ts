@@ -1,11 +1,12 @@
 import { Request, Response } from "express"
-import { OhmyfoodModel } from "../models/ohmyfoodModel.js"
+import { KanapModel } from "../models/kanapModel.js"
 
-export const ohMyFoodAll = async (req: Request, res: Response) => {
-  await OhmyfoodModel.find()
-    .then((products) => {
-      res.status(200).json(products)
+export const kanapAll = async (req: Request, res: Response) => {
+  await KanapModel.find()
+    .then((kanaps) => {
+      res.status(200).json(kanaps)
     })
+
     .catch(() => {
       res
         .status(500)
@@ -17,20 +18,20 @@ export const ohMyFoodAll = async (req: Request, res: Response) => {
     })
 }
 
-export const ohMyFoodRestau = async (req: Request, res: Response) => {
-  await OhmyfoodModel.findOne({ name: req.params.name })
-    .then((product) => {
-      if (!product) {
+export const oneKanap = async (req: Request, res: Response) => {
+  await KanapModel.findOne({ id: req.params.id })
+    .then((kanap) => {
+      console.log(kanap)
+      if (!kanap) {
         return res
           .status(404)
           .send(new Error("Il n'y a aucun produit correspondant"))
       }
-
-      res.status(200).json(product)
+      res.status(200).json(kanap)
     })
-    .catch(() => {
+    .catch((error) => {
       res
-        .status(500)
+        .status(400)
         .send(
           new Error(
             "Désolé, il y  a eu  un problème interne au serveur.\n\nVeuillez réesayer plus tard."

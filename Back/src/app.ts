@@ -11,7 +11,7 @@ dotenv.config()
 
 import { bookiRoute } from "./routes/bookiRoutes.js"
 import { ohmyfoodRoutes } from "./routes/ohmyfoodRoutes.js"
-// import kanapRoutes from "./routes/kanap"
+import { kanapRoutes } from "./routes/kanapRoutes.js"
 import { panthereRoutes } from "./routes/panthereRoutes.js"
 // import kasaRoutes from "./routes/kasa" A FAIRE EN DERNIER --> le JSON est à mettre en bdd
 
@@ -59,7 +59,7 @@ app.use(limiter)
 app.use("/images", express.static(path.join(__dirname, "images")))
 app.use("/booki", bookiRoute)
 app.use("/ohmyfood", ohmyfoodRoutes)
-// app.use("/kanap", kanapRoutes)
+app.use("/kanap", kanapRoutes)
 app.use("/panthere", panthereRoutes)
 // app.use("/contact", mailRoutes)
 // app.use("/projects", projectsRoutes)

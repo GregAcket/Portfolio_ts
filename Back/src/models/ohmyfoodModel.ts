@@ -61,19 +61,3 @@ const restauModel = new Schema<Ohmyfood>({
 })
 
 export const OhmyfoodModel = mongoose.model<Ohmyfood>("Ohmyfood", restauModel)
-
-// exports.find = () => {
-//   return new Promise((resolve, reject) =>
-//     resolve(JSON.parse(JSON.stringify(restau)))
-//   )
-// }
-//
-// exports.findById = (name) => {
-//   return new Promise((resolve, reject) =>
-//     resolve(
-//       JSON.parse(JSON.stringify(restau)).find(
-//         (product) => product.name === name
-//       )
-//     )
-//   )
-// }

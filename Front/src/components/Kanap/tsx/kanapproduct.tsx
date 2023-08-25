@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 
 import "../css/style.css"
@@ -33,30 +33,22 @@ export default function Kanapproduct() {
   //EFFECT
   const { id } = useParams()
 
-  const objetUrl = `https://kanap.greg-dev.com/products/${id}`
+  const url = `http://localhost:8000/kanap/${id}`
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(objetUrl)
+        const response = await fetch(url)
         const kanapJson = await response.json()
         setKanapData(kanapJson)
-
-        if (Object.keys(kanapJson).length === 0) {
-          navigate("/404")
-        }
       } catch (err) {
         console.log(err)
       }
     }
     fetchData()
-  }, [objetUrl])
+  }, [url])
 
-  // NAV
-
-  const navigate = useNavigate()
-
-  // Logic
+  // LOGIC
 
   const colorOptions = kanapData.colors?.map((color) => {
     return (

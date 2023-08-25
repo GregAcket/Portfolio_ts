@@ -30,7 +30,7 @@ export type Ohmyfood = {
 }
 
 export type KanapType = {
-  _id: string
+  id: string
   altTxt: string
   colors: string[]
   description: string
