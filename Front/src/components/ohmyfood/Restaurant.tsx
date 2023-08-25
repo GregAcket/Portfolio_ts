@@ -22,7 +22,7 @@ export default function Restaurant() {
 
   const [restauData, setRestauData] = useState<Ohmyfood>()
 
-  const url = `https://realisations.greg-dev.com/ohmyfood/${name}`
+  const url = `http://localhost:8000/ohmyfood/${name}`
 
   useEffect(() => {
     async function fetchData() {

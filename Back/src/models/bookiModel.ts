@@ -18,4 +18,4 @@ const pictureModel = new Schema<Booki>({
   stars: String,
 })
 
-export const BookiPicture = mongoose.model<Booki>("BookiPicture", pictureModel)
+export const BookiPicture = mongoose.model<Booki>("Bookipicture", pictureModel)

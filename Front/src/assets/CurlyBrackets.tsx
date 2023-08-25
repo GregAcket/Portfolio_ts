@@ -9,33 +9,24 @@ const Path = styled.path<ThemeProps>`
 
 const Svg = styled.svg`
   position: absolute;
-  bottom: -100px;
-  right: 15px;
+  bottom: -40px;
+  left: 70%;
   width: 70px;
   height: 70px;
   transform: rotate(30deg);
-  @media (min-width: 550px) {
-    bottom: -170px;
-    right: 60px;
-  }
+
   @media (min-width: 768px) {
-    bottom: -450px;
-    right: 175px;
+    bottom: -100px;
+    left: 70%;
   }
 
   @media (min-width: 992px) {
-    bottom: -530px;
-    right: 305px;
+    bottom: 15px;
+    left: 60%;
   }
 
-  @media (min-width: 1055px) {
-    bottom: -530px;
-    right: 335px;
-  }
-
-  @media (min-width: 1170px) {
-    bottom: -480px;
-    right: 390px;
+  @media (min-width: 1180px) {
+    left: 700px;
   }
 `
 

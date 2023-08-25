@@ -1,27 +1,41 @@
-import { MouseEvent, useState } from "react"
+import { MouseEvent, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import logo from "../../assets/panthere/img/logo.webp"
 import Lightbox from "./PanthereLightbox"
-import ImageJson from "../../utils/panthere_images.json"
 
 import "./pantheresite.css"
+import { lightboxPictureType } from "../../utils/type"
 
 type PanthereProps = {
   goToContactPage: () => void
 }
 
-export type lightboxPictureType = {
-  id?: number
-  url?: string
-  text?: string
-  alt?: string
-  h3?: string
-  p?: string
-}
-
 export default function PanthereMain({ goToContactPage }: PanthereProps) {
+  // STATE
+
   const [isLightboxShown, setLightbox] = useState(false)
   const [whichPicture, setPicture] = useState<lightboxPictureType>({})
+  const [pantherePics, setPantherePics] = useState<lightboxPictureType[]>([])
+
+  // EFFECT
+
+  const url = "http://localhost:8000/panthere"
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(url)
+        const datas = await response.json()
+        setPantherePics(datas)
+        setPicture(datas)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchData()
+  }, [url])
+
+  // LOGIC
 
   let hideLightbox = () => {
     setLightbox(false)
@@ -35,7 +49,7 @@ export default function PanthereMain({ goToContactPage }: PanthereProps) {
       const idString = grab.getAttribute("data-id")
       if (idString) {
         const id = parseInt(idString)
-        const check = ImageJson.find((search) => search.id === id)
+        const check = pantherePics.find((search) => search.id === id)
         if (check) {
           setPicture(check)
           setLightbox(true)
@@ -44,7 +58,7 @@ export default function PanthereMain({ goToContactPage }: PanthereProps) {
     }
   }
 
-  let Article = ImageJson.map((image) => {
+  let Article = pantherePics.map((image) => {
     return (
       <article
         className="panthere_bloc4_article"
@@ -186,6 +200,7 @@ export default function PanthereMain({ goToContactPage }: PanthereProps) {
         show={isLightboxShown}
         willClose={hideLightbox}
         whichPicture={whichPicture}
+        pantherePics={pantherePics}
       />
     </>
   )

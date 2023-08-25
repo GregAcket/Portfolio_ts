@@ -70,10 +70,15 @@ const ProjectsWrappers = styled.div`
   }
 `
 
+const Layer = styled.div`
+  position: absolute;
+  width: 95%;
+`
+
 const TerminalWrapper = styled.div<ThemeProps>`
   position: absolute;
-  bottom: -2500px;
-  right: 65px;
+  bottom: -2420px;
+  left: 55%;
   height: 50px;
   width: 50px;
   padding: 5px;
@@ -83,26 +88,16 @@ const TerminalWrapper = styled.div<ThemeProps>`
 
   @media (min-width: 768px) {
     bottom: -1150px;
-    right: 105px;
-  }
-
-  @media (min-width: 910px) {
-    bottom: -1180px;
+    left: 20%;
   }
 
   @media (min-width: 992px) {
-    bottom: -1300px;
-    right: 525px;
+    bottom: -620px;
+    left: 90%;
   }
 
-  @media (min-width: 1200px) {
-    bottom: -1180px;
-    right: 640px;
-  }
-
-  @media (min-width: 1700px) {
-    bottom: -1260px;
-    right: 640px;
+  @media (min-width: 1180px) {
+    left: 1000px;
   }
 `
 
@@ -166,15 +161,17 @@ export default function Projects() {
   return (
     <>
       <ProjectSection $isProjectsWrapperHidden={isProjectsWrapperHidden}>
-        <CurlyBrackets />
-        <SquareBrackets />
-        <Branch />
-        <TerminalWrapper $isDarkMode={theme === "dark"}>
-          <Terminal />
-        </TerminalWrapper>
-        <Code />
-        <RoundBrackets />
         <ProjectsWrappers>{projects}</ProjectsWrappers>
+        <Layer>
+          <CurlyBrackets />
+          <SquareBrackets />
+          <Branch />
+          <TerminalWrapper $isDarkMode={theme === "dark"}>
+            <Terminal />
+          </TerminalWrapper>
+          <Code />
+          <RoundBrackets />
+        </Layer>
       </ProjectSection>
     </>
   )

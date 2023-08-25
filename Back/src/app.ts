@@ -10,9 +10,9 @@ dotenv.config()
 // import mailRoutes from "./routes/mail"
 
 import { bookiRoute } from "./routes/bookiRoutes.js"
-// import ohmyfoodRoutes from "./routes/ohmyfood"
+import { ohmyfoodRoutes } from "./routes/ohmyfoodRoutes.js"
 // import kanapRoutes from "./routes/kanap"
-// import panthereRoutes from "./routes/panthere"
+import { panthereRoutes } from "./routes/panthereRoutes.js"
 // import kasaRoutes from "./routes/kasa" A FAIRE EN DERNIER --> le JSON est à mettre en bdd
 
 // import projectsRoutes from "./routes/projects"
@@ -33,7 +33,7 @@ mongoose
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"))
 
-// app.use(cors())
+app.use(cors())
 app.use(express.json())
 
 app.use((req, res, next) => {
@@ -58,9 +58,9 @@ app.use(
 app.use(limiter)
 app.use("/images", express.static(path.join(__dirname, "images")))
 app.use("/booki", bookiRoute)
-// app.use("/ohmyfood", ohmyfoodRoutes)
+app.use("/ohmyfood", ohmyfoodRoutes)
 // app.use("/kanap", kanapRoutes)
-// app.use("/panthere", panthereRoutes)
+app.use("/panthere", panthereRoutes)
 // app.use("/contact", mailRoutes)
 // app.use("/projects", projectsRoutes)
 // app.use("/kasa", kasaRoutes)

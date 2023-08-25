@@ -203,7 +203,7 @@ export default function Contact() {
             body: JSON.stringify(form),
           })
           const feedback = await response.json()
-          alert(feedback.message)
+          alert(feedback)
           document.location.href = "/"
         } catch (error) {
           alert(`Une  erreur s'est produite. Veuillez nous excuser`)

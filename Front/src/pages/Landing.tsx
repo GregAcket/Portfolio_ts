@@ -7,6 +7,7 @@ import { styled } from "styled-components"
 const H2 = styled.h2`
   margin-bottom: 50px;
   padding: 0px 30px;
+
   @media (min-width: 768px) {
     font-size: 34px;
     margin-bottom: 80px;

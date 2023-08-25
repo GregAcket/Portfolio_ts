@@ -9,25 +9,24 @@ const Path = styled.path<ThemeProps>`
 
 const Svg = styled.svg`
   position: absolute;
-  top: 2000px;
-  right: 55px;
+  top: 1200px;
+  left: 70%;
   width: 50px;
   height: 50px;
   transform: rotate(-50deg);
 
   @media (min-width: 768px) {
-    top: 1600px;
-    right: 155px;
+    top: 785px;
+    left: 60%;
   }
 
   @media (min-width: 992px) {
-    top: 1780px;
-    right: 190px;
+    top: 500px;
+    left: 20%;
   }
 
-  @media (min-width: 1200px) {
-    top: 1835px;
-    right: 190px;
+  @media (min-width: 1180px) {
+    left: 250px;
   }
 `
 

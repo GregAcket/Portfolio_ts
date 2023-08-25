@@ -33,6 +33,7 @@ const StyledSocials = styled.div`
 `
 
 const Links = styled(Link)`
+  border-bottom: 1px solid transparent;
   transition: border-bottom 400ms;
 
   &:hover {

@@ -25,7 +25,7 @@ export default function Ohmyfoodsite() {
   const [restauData, setRestauData] = useState<Ohmyfood[]>([])
 
   // EFFECT
-  const url = "https://realisations.greg-dev.com/ohmyfood"
+  const url = "http://localhost:8000/ohmyfood"
 
   useEffect(() => {
     async function fetchData() {
@@ -47,31 +47,34 @@ export default function Ohmyfoodsite() {
     target?.scrollIntoView()
   }
 
-  const Restau = restauData?.map((restau) => {
-    return (
-      <Link to={restau.name} key={restau.id} onClick={scroll}>
-        <article className="card">
-          <img className="card_img" src={restau.image} alt={restau.name} />
+  const Restau = () => {
+    const restaux = restauData.map((restau) => {
+      return (
+        <Link to={restau.name} key={restau.id} onClick={scroll}>
+          <article className="card">
+            <img className="card_img" src={restau.image} alt={restau.name} />
 
-          <div className="omf_card_text">
-            <h3 className="card_restaurant card_restaurant-name omf_h3">
-              {restau.name}
-            </h3>
-            <FontAwesomeIcon
-              className="omf_fa-solid omf_fa-heart"
-              icon={faHeart}
-            />
-            <p className="card_restaurant card_restaurant-place">
-              {restau.place}
-            </p>
-            {restau.nouveau === true && (
-              <span className="card_new">Nouveau</span>
-            )}
-          </div>
-        </article>
-      </Link>
-    )
-  })
+            <div className="omf_card_text">
+              <h3 className="card_restaurant card_restaurant-name omf_h3">
+                {restau.name}
+              </h3>
+              <FontAwesomeIcon
+                className="omf_fa-solid omf_fa-heart"
+                icon={faHeart}
+              />
+              <p className="card_restaurant card_restaurant-place">
+                {restau.place}
+              </p>
+              {restau.nouveau === true && (
+                <span className="card_new">Nouveau</span>
+              )}
+            </div>
+          </article>
+        </Link>
+      )
+    })
+    return restaux
+  }
 
   return (
     <>
@@ -131,7 +134,7 @@ export default function Ohmyfoodsite() {
         <section id="restaurant">
           <h2 className="omf_h2">Restaurants</h2>
 
-          {Restau}
+          <Restau />
         </section>
       </main>
 

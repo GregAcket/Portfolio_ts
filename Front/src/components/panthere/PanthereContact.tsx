@@ -68,8 +68,8 @@ export default function Pantherecontact() {
                 id="message"
                 className="panthere_input"
                 placeholder="Je souhaiterai ..."
-                rows="4"
-                cols="50"
+                rows={4}
+                cols={50}
                 required
               ></textarea>
             </div>

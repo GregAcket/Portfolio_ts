@@ -4,18 +4,23 @@ import {
   faChevronRight,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
-import ImageJson from "../../utils/panthere_images.json"
 import "./pantherelightbox.css"
 import { useEffect, useState } from "react"
-import { lightboxPictureType } from "./PanthereMain"
+import { lightboxPictureType } from "../../utils/type"
 
 type LightboxPropsType = {
   show: boolean
   willClose: () => void
   whichPicture: lightboxPictureType
+  pantherePics: lightboxPictureType[]
 }
 
-const Lightbox = ({ willClose, show, whichPicture }: LightboxPropsType) => {
+const Lightbox = ({
+  willClose,
+  show,
+  whichPicture,
+  pantherePics,
+}: LightboxPropsType) => {
   const showOrHideBox = show
     ? "panthere_lightbox panthere_lightbox_show"
     : "panthere_lightbox panthere_lightbox_hide"
@@ -30,11 +35,11 @@ const Lightbox = ({ willClose, show, whichPicture }: LightboxPropsType) => {
     let number = picture.id
     if (number !== undefined) {
       number++
-      if (number > ImageJson.length - 1) {
+      if (number > pantherePics.length - 1) {
         number = 0
       }
     }
-    let check = ImageJson.find((search) => search.id === number)
+    let check = pantherePics.find((search) => search.id === number)
     if (check !== undefined) {
       setPicture(check)
     }
@@ -45,10 +50,10 @@ const Lightbox = ({ willClose, show, whichPicture }: LightboxPropsType) => {
     if (number !== undefined) {
       number--
       if (number < 0) {
-        number = ImageJson.length - 1
+        number = pantherePics.length - 1
       }
     }
-    let check = ImageJson.find((search) => search.id === number)
+    let check = pantherePics.find((search) => search.id === number)
     if (check !== undefined) {
       setPicture(check)
     }
@@ -66,6 +71,8 @@ const Lightbox = ({ willClose, show, whichPicture }: LightboxPropsType) => {
               className="panthere_lightbox_image"
               src={picture.url}
               alt={picture.text}
+              width={450}
+              height={450}
             />
             <p className="panthere_lightbox_p">{picture.text}</p>
             <div className="panthere_lightbox_buttonWrapper">

@@ -50,6 +50,15 @@ export type KanapCart = {
   quantity: number
 }
 
+export type lightboxPictureType = {
+  id?: number
+  url?: string
+  text?: string
+  alt?: string
+  h3?: string
+  p?: string
+}
+
 export type Project = {
   id: number
   altLogo: string
