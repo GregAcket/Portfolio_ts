@@ -10,7 +10,7 @@ const Section = styled.section<ThemeProps>`
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  min-height: 600px;
+  min-height: 520px;
   background: linear-gradient(
     25deg,
     ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")} 50%,

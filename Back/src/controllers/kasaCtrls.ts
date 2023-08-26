@@ -1,12 +1,11 @@
 import { Request, Response } from "express"
-import { KanapModel } from "../models/kanapModel.js"
+import { KasaModel } from "../models/kasaModel.js"
 
-export const kanapAll = async (req: Request, res: Response) => {
-  await KanapModel.find()
-    .then((kanaps) => {
-      res.status(200).json(kanaps)
+export const kasaAll = async (req: Request, res: Response) => {
+  await KasaModel.find()
+    .then((products) => {
+      res.status(200).json(products)
     })
-
     .catch(() => {
       res
         .status(500)
@@ -18,19 +17,20 @@ export const kanapAll = async (req: Request, res: Response) => {
     })
 }
 
-export const oneKanap = async (req: Request, res: Response) => {
-  await KanapModel.findOne({ id: req.params.id })
-    .then((kanap) => {
-      if (!kanap) {
+export const oneKasa = async (req: Request, res: Response) => {
+  await KasaModel.findOne({ id: req.params.id })
+    .then((product) => {
+      if (!product) {
         return res
           .status(404)
           .send(new Error("Il n'y a aucun produit correspondant"))
       }
-      res.status(200).json(kanap)
+
+      res.status(200).json(product)
     })
-    .catch((error) => {
+    .catch(() => {
       res
-        .status(400)
+        .status(500)
         .send(
           new Error(
             "Désolé, il y  a eu  un problème interne au serveur.\n\nVeuillez réesayer plus tard."

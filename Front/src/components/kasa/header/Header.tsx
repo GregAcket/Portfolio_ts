@@ -18,7 +18,7 @@ export default function Header() {
             </li>
             <li className="kasa_header_li">
               <Link
-                to={`/project/kasa/About`}
+                to={`/project/kasa/about`}
                 className={"kasa_header_a apropos"}
               >
                 A propos

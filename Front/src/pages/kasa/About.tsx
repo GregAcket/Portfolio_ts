@@ -1,8 +1,7 @@
 import { styled } from "styled-components"
 import bannerAbout from "../../assets/kasa/kalen-emsley-Bkci_8qcdvQ-unsplash 2.webp"
-import Dropdown from "../../components/kasa/dropdown/dropdown"
+import Dropdown from "../../components/kasa/dropdown/Dropdown"
 import dropdownjson from "../../utils/kasa/dropdown.json"
-import "./about.css"
 
 const DropdownWrapper = styled.div`
   display: flex;
@@ -13,10 +12,25 @@ const DropdownWrapper = styled.div`
   width: 100%;
 `
 
+const Img = styled.img`
+  max-width: 1240px;
+  width: 100%;
+  height: 223px;
+  margin-top: 44px;
+  background-color: black;
+  mix-blend-mode: darken;
+  border-radius: 25px;
+  object-fit: cover;
+
+  @media all and (max-width: 549px) {
+    margin-top: 17px;
+  }
+`
+
 export default function About() {
   return (
     <>
-      <img className="banner" src={bannerAbout} alt="Mountain Landscape"></img>
+      <Img src={bannerAbout} alt="Mountain Landscape" />
 
       <DropdownWrapper>
         {dropdownjson.map((objet, index) => (

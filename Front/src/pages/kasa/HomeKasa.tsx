@@ -1,8 +1,8 @@
 import bannerhomepage from "../../assets/kasa/eric-muhr-P_XxsdVgtpQ-unsplash.webp"
-import Thumb from "../../components/kasa/thumb/thumb"
+import Thumb from "../../components/kasa/thumb/Thumb"
 import "./home.css"
 
-export default function Home() {
+export default function HomeKasa() {
   return (
     <>
       <div className="containerHomeBanner">
