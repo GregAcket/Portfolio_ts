@@ -39,8 +39,6 @@ const ProjectsWrappers = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 1149px;
-  opacity: 1;
-  transition: opacity 400ms;
 
   :hover div {
     background-position: left 8px;
@@ -118,13 +116,14 @@ export default function Projects() {
 
   // EFFECT
 
-  const url = "https://realisations.greg-dev.com/realisations"
+  const url = "http://localhost:8000/projects"
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(url)
         const DataJson = await response.json()
+
         setAllProjects(DataJson)
       } catch (err) {
         console.log(err)

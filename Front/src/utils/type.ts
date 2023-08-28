@@ -17,6 +17,11 @@ export type StyleProjectProps = {
   $isIntersected?: boolean
 }
 
+export type Delay = {
+  $isIntersected: boolean
+  $isDelayed: number
+}
+
 export type Ohmyfood = {
   id: number
   image: string
@@ -60,16 +65,13 @@ export type lightboxPictureType = {
 
 export type Project = {
   id: number
-  altLogo: string
-  description: string
-  github: string
-  link: string
-  screenshot: string
-  smallscreenshot: string
-  techno: string[]
+  name?: string
+  urlScreenshot: string
   urlLogo: string
+  altLogo: string
+  colorUnderline: string
   title: string
-  comment: string
+  link: string
 }
 
 export type Kasa = {

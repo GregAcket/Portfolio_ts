@@ -7,10 +7,6 @@ const StyledPath = styled.path<ThemeProps>`
   fill: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
 `
 
-const StyledSpan = styled.tspan`
-  fill: "green";
-`
-
 const Svg = styled.svg`
   max-height: 36px;
   max-width: 72px;
@@ -42,13 +38,13 @@ export default function Logodev() {
           strokeWidth="0.235"
           d="M28.118 112.56c-1.174 1.105.001 0-1.179 1.104 1.184 1.08.006.007 1.18 1.08v-.347l-.8-.743.8-.75v-.344zm-1.206 1.07c-.003 0 0 .002 0 0z"
           fontSize="3.175"
-        ></StyledPath>
+        />
         <StyledPath
           $isDarkMode={theme === "dark"}
           strokeWidth="0.235"
           d="M30.128 114.768c1.174-1.104 0 0 1.18-1.104-1.184-1.079-.007-.007-1.18-1.08v.347l.798.743-.798.75v.344zm1.206-1.07c.004 0 0-.002 0 0z"
           fontSize="3.175"
-        ></StyledPath>
+        />
         <text
           x="24.154"
           y="114.968"
@@ -56,7 +52,7 @@ export default function Logodev() {
           strokeWidth="0.265"
           fontSize="3.175"
           xmlSpace="preserve"
-        ></text>
+        />
         <text
           x="30.654"
           y="108.627"
@@ -66,7 +62,7 @@ export default function Logodev() {
           transform="scale(.9485 1.0543)"
           xmlSpace="preserve"
         >
-          <StyledSpan
+          <tspan
             x="30.654"
             y="108.627"
             fill="green"
@@ -75,7 +71,7 @@ export default function Logodev() {
             fontSize="2.528"
           >
             /
-          </StyledSpan>
+          </tspan>
         </text>
         <path
           fill="green"

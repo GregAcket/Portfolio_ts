@@ -20,7 +20,7 @@ const panthereModel = new Schema<PantherePictureType>({
   p: { type: String, required: true },
 })
 
-export const pantherePicture = mongoose.model<PantherePictureType>(
+export const PantherePicture = mongoose.model<PantherePictureType>(
   "panthere",
   panthereModel
 )

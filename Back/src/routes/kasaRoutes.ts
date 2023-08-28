@@ -1,5 +1,5 @@
 import express from "express"
-import { kasaAll, oneKasa } from "../controllers/kasaCtrls.js"
+import { kasaAll, oneKasa } from "../controllers/kasaCtrl.js"
 
 export const kasaRoutes = express.Router()
 

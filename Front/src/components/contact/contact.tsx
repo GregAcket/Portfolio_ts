@@ -1,6 +1,8 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
 import { styled } from "styled-components"
 import BackgroundWave from "./BackgroundWave"
+import { ThemeProps } from "../../utils/type"
+import { ThemeContext } from "../../utils/ThemeProvider"
 
 type MailForm = {
   name: {
@@ -65,14 +67,34 @@ const FormField = styled.div`
   width: 100%;
   flex-direction: column;
 
-  input {
-    height: 40px;
-    font-size: 18px;
-  }
-
   @media (min-width: 768px) {
     width: 50%;
   }
+`
+
+const Input = styled.input<ThemeProps>`
+  height: 40px;
+  font-size: 18px;
+
+  &:focus + label {
+    font-size: 16px;
+    bottom: 61px;
+    left: 2px;
+    transition: all 200ms;
+    color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
+  }
+
+  &:valid + label {
+    color: transparent;
+  }
+`
+
+const Label = styled.label`
+  position: relative;
+  bottom: 29px;
+  left: 5px;
+  color: black;
+  line-height: 18px;
 `
 
 const DivTextArea = styled.div`
@@ -97,8 +119,27 @@ const ErrorMsg = styled.p`
   color: red;
 `
 
-const Textarea = styled.textarea`
+const Textarea = styled.textarea<ThemeProps>`
   font-size: 18px;
+
+  &:focus + label {
+    font-size: 16px;
+    bottom: 252px;
+    left: 2px;
+    transition: all 200ms;
+    color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
+  }
+
+  &:valid + label {
+    color: transparent;
+  }
+`
+const Labeltextarea = styled.label`
+  position: relative;
+  bottom: 220px;
+  left: 5px;
+  color: black;
+  line-height: 18px;
 `
 
 export default function Contact() {
@@ -109,6 +150,10 @@ export default function Contact() {
     email: { value: " " },
     message: { value: " " },
   })
+
+  //CTXT
+
+  const { theme } = useContext(ThemeContext)
 
   // Listener on fields form changes
 
@@ -190,7 +235,7 @@ export default function Contact() {
     if (!isFormValid) {
       alert("Il y a une erreur dans le remplissage de votre formulaire")
     } else {
-      const url = "https://api.greg-dev.com/contact"
+      const url = "http://localhost:8000/contact"
 
       async function postForm() {
         try {
@@ -223,40 +268,43 @@ export default function Contact() {
         <StyledForm method="post" onSubmit={(e) => sendMail(e)}>
           <FormId>
             <FormField>
-              <label htmlFor="name">Votre nom</label>
-              <input
+              <Input
                 type="text"
                 name="name"
                 id="name"
                 onChange={(e) => handleChange(e)}
+                $isDarkMode={theme === "dark"}
                 required
               />
+              <Label htmlFor="name">Votre nom</Label>
 
               {form.name.error && <ErrorMsg>{form.name.error}</ErrorMsg>}
             </FormField>
 
             <FormField>
-              <label htmlFor="email">Votre e-mail </label>
-              <input
-                type="email"
+              <Input
+                type="text"
                 name="email"
                 id="email"
                 onChange={(e) => handleChange(e)}
+                $isDarkMode={theme === "dark"}
                 required
               />
+              <Label htmlFor="email">Votre e-mail </Label>
 
               {form.email.error && <ErrorMsg>{form.email.error}</ErrorMsg>}
             </FormField>
           </FormId>
           <DivTextArea>
-            <label htmlFor="message">Votre message </label>
             <Textarea
               name="message"
               id="message"
               rows={10}
               onChange={(e) => handleChange(e)}
+              $isDarkMode={theme === "dark"}
               required
             />
+            <Labeltextarea htmlFor="message">Votre message </Labeltextarea>
 
             {form.message.error && <ErrorMsg>{form.message.error}</ErrorMsg>}
           </DivTextArea>

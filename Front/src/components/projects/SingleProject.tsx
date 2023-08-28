@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { styled } from "styled-components"
-import { Project, StyleProjectProps, ThemeProps } from "../../utils/type"
+import { Delay, Project, StyleProjectProps, ThemeProps } from "../../utils/type"
 import { Link, useNavigate } from "react-router-dom"
 import { StateSingleProjectsContext } from "../../utils/StateSingleProjectProvider"
 import { StateProjectsContext } from "../../utils/StateProjectsProvider"
@@ -10,12 +10,20 @@ type SingleProjectProps = {
   project: Project
 }
 
-const Links = styled(Link)<StyleProjectProps>`
+const delay = (num: number) => {
+  const timeToWait = (num * 300).toString() + "ms"
+  console.log(timeToWait)
+  return timeToWait
+}
+
+const Links = styled(Link)<Delay>`
   text-decoration: none;
   transition: all 0.5s;
   opacity: ${({ $isIntersected }) => ($isIntersected ? "1" : "0")};
   transform: ${({ $isIntersected }) =>
     $isIntersected ? "translateY(0px)" : "translateY(30px)"};
+  transition-delay: ${({ $isDelayed }) => delay($isDelayed)};
+
   @media (min-width: 768px) {
     display: flex;
   }
@@ -137,7 +145,7 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
   let options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.25,
+    threshold: 0.15,
   }
 
   useEffect(() => {
@@ -149,7 +157,7 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
 
   /* The openProject function closes the projects section, wait for 600ms the time projects section fades-out, 
     goes to the wanted address, scroll to the top of the opened project and finally makes him fades-in
-    */
+  */
 
   const openProject = async () => {
     changeProjectsWrapper()
@@ -167,16 +175,6 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
     }, 200)
   }
 
-  // color needed for the underline
-
-  const colorArray = [
-    "#0065fc 50%",
-    "#9356dc 50%, #f576da",
-    "#f3976c 50%",
-    "#0a3b4d 50%",
-    "#ff6060 50%",
-  ]
-
   return (
     <Links
       to="#"
@@ -184,11 +182,12 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
       onClick={() => openProject()}
       ref={singleProjectRef}
       $isIntersected={isIntersected}
+      $isDelayed={project.id}
     >
       <StyledArticle>
         <Images>
           <Screenshot
-            src={project.smallscreenshot}
+            src={project.urlScreenshot}
             alt="Project Screenshot"
             width={250}
             height={400}
@@ -197,8 +196,8 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
           <Logo src={project.urlLogo} alt={project.altLogo} />
         </Images>
         <Title>
-          <LogoUnderline $ColorUnderline={colorArray[project.id]} />
-          <Comment $isDarkMode={theme === "dark"}>{project.comment}</Comment>
+          <LogoUnderline $ColorUnderline={project.colorUnderline} />
+          <Comment $isDarkMode={theme === "dark"}>{project.title}</Comment>
         </Title>
       </StyledArticle>
     </Links>

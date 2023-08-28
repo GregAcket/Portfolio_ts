@@ -9,7 +9,7 @@ import { css, styled } from "styled-components"
 import { StyleProjectProps, ThemeProps } from "../utils/type"
 import { ThemeContext } from "../utils/ThemeProvider"
 
-const MasterWrapper = styled.section<StyleProjectProps>`
+const SingleProjectWrapper = styled.section<StyleProjectProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,13 +89,13 @@ export default function MasterWrapperComponent() {
 
   return (
     <>
-      <MasterWrapper $isMasterWrapperShown={isMasterWrapperShown}>
+      <SingleProjectWrapper $isMasterWrapperShown={isMasterWrapperShown}>
         <Button onClick={() => closeProject()} $isDarkMode={theme === "dark"}>
           <Close icon={faXmark} aria-label="Fermer le projet" />
         </Button>
 
         <Outlet />
-      </MasterWrapper>
+      </SingleProjectWrapper>
     </>
   )
 }

@@ -6,14 +6,8 @@ export const ohMyFoodAll = async (req: Request, res: Response) => {
     .then((products) => {
       res.status(200).json(products)
     })
-    .catch(() => {
-      res
-        .status(500)
-        .send(
-          new Error(
-            "Désolé, il y  a eu  un problème interne au serveur.\n\nVeuillez réesayer plus tard."
-          )
-        )
+    .catch((err) => {
+      res.status(400).json(err)
     })
 }
 
@@ -21,20 +15,12 @@ export const ohMyFoodRestau = async (req: Request, res: Response) => {
   await OhmyfoodModel.findOne({ name: req.params.name })
     .then((product) => {
       if (!product) {
-        return res
-          .status(404)
-          .send(new Error("Il n'y a aucun produit correspondant"))
+        return res.status(404).json("Il n'y a aucun produit correspondant")
       }
 
       res.status(200).json(product)
     })
-    .catch(() => {
-      res
-        .status(500)
-        .send(
-          new Error(
-            "Désolé, il y  a eu  un problème interne au serveur.\n\nVeuillez réesayer plus tard."
-          )
-        )
+    .catch((err) => {
+      res.status(400).json(err)
     })
 }

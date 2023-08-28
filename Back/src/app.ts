@@ -7,16 +7,15 @@ import cors from "cors"
 
 dotenv.config()
 
-// import mailRoutes from "./routes/mail"
-
 import { bookiRoute } from "./routes/bookiRoutes.js"
 import { ohmyfoodRoutes } from "./routes/ohmyfoodRoutes.js"
 import { kanapRoutes } from "./routes/kanapRoutes.js"
 import { panthereRoutes } from "./routes/panthereRoutes.js"
 import { kasaRoutes } from "./routes/kasaRoutes.js"
-
-// import projectsRoutes from "./routes/projects"
-// import mailsRoutes from "./routes/mails"
+import { dashboardRoutes } from "./routes/dashboardRoutes.js"
+import { projectRoutes } from "./routes/projectRoutes.js"
+import { mailRoutes } from "./routes/mailRoutes.js"
+import { loginRoutes } from "./routes/loginRoutes.js"
 
 import path from "path"
 
@@ -58,10 +57,17 @@ app.use(
 )
 app.use(limiter)
 app.use("/images", express.static(path.join(__dirname, "images")))
+
+app.use("/projects", projectRoutes)
+
 app.use("/booki", bookiRoute)
 app.use("/ohmyfood", ohmyfoodRoutes)
 app.use("/kanap", kanapRoutes)
 app.use("/panthere", panthereRoutes)
 app.use("/kasa", kasaRoutes)
-// app.use("/contact", mailRoutes)
-// app.use("/projects", projectsRoutes)
+
+app.use("/contact", mailRoutes)
+
+app.use("/login", loginRoutes)
+// app.use("/signup", loginRoutes)
+app.use("/dashboard", dashboardRoutes)
