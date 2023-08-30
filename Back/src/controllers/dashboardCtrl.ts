@@ -2,12 +2,6 @@ import { Request, Response } from "express"
 import { Project } from "../models/projectModel.js"
 import fs from "fs"
 
-export const allProjects = async (req: Request, res: Response) => {
-  await Project.find()
-    .then((project) => res.status(200).json(project))
-    .catch((error) => res.status(400).json(error))
-}
-
 export const createProject = async (req: Request, res: Response) => {
   const project = { ...req.body }
   const newProject = new Project({ ...project })

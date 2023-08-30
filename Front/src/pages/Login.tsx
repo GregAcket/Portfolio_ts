@@ -1,16 +1,19 @@
-import { ChangeEvent, FormEvent, useContext } from "react"
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
 import { styled } from "styled-components"
 import { ThemeProps } from "../utils/type"
 import { ThemeContext } from "../utils/ThemeProvider"
 import TopHeader from "../components/header/TopHeader"
+import { useNavigate } from "react-router-dom"
 
 const Form = styled.form`
   display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   align-self: center;
   margin: auto;
   flex-direction: column;
-
-  margin: 70px 0px;
 `
 
 const FormField = styled.div`
@@ -34,6 +37,9 @@ const Input = styled.input<ThemeProps>`
 
   &:valid + label {
     color: transparent;
+    font-size: 16px;
+    bottom: 72px;
+    left: 2px;
   }
 `
 
@@ -53,19 +59,77 @@ const Login = styled.input`
   border-radius: 25px;
   width: fit-content;
   padding: 10px 15px;
-
   font-size: 18px;
   cursor: pointer;
 `
 
+const P = styled.p`
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 20px;
+  text-align: center;
+  color: red;
+  padding: 0px 10px;
+  min-width: 340px;
+`
+
 export default function Connect() {
+  const [credentials, setCredentials] = useState({
+    name: " ",
+    password: " ",
+  })
+
+  const [islogged, setIslogged] = useState({ logged: false, error: "" })
+
   // CTXT
 
   const { theme } = useContext(ThemeContext)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {}
+  // NAVIGATE
 
-  const login = (e: FormEvent<HTMLFormElement>) => {}
+  const navigate = useNavigate()
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const fieldName = e.target.name
+    const fieldValue = e.target.value
+    const newField = { [fieldName]: fieldValue }
+    setCredentials({ ...credentials, ...newField })
+  }
+
+  const login = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const url = "http://localhost:8000/login"
+
+    const postLogin = async () => {
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        })
+        const data = await response.json()
+        if (!data.token) {
+          setIslogged({ logged: false, error: data })
+          return
+        } else {
+          localStorage.setItem("token", data.token)
+          localStorage.setItem("userId", data.userId)
+
+          navigate("/dashboard")
+        }
+      } catch (error) {
+        console.log(error)
+        alert(`Une  erreur s'est produite. Veuillez nous excuser`)
+      }
+    }
+    postLogin()
+  }
 
   return (
     <>
@@ -96,6 +160,7 @@ export default function Connect() {
         </FormField>
         <Login type="submit" value="Login" id="send" />
       </Form>
+      {!islogged.logged && <P> {islogged.error} </P>}
     </>
   )
 }

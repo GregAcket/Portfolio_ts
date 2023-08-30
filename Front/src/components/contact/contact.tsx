@@ -3,6 +3,7 @@ import { styled } from "styled-components"
 import BackgroundWave from "./BackgroundWave"
 import { ThemeProps } from "../../utils/type"
 import { ThemeContext } from "../../utils/ThemeProvider"
+import { useNavigate } from "react-router-dom"
 
 type MailForm = {
   name: {
@@ -35,6 +36,7 @@ const ContactWrapperSection = styled.section`
 
 const H2 = styled.h2`
   margin-bottom: 80px;
+
   @media (min-width: 768px) {
     font-size: 34px;
   }
@@ -155,6 +157,10 @@ export default function Contact() {
 
   const { theme } = useContext(ThemeContext)
 
+  // NAVIGATE
+
+  const navigate = useNavigate()
+
   // Listener on fields form changes
 
   const handleChange = (
@@ -249,7 +255,7 @@ export default function Contact() {
           })
           const feedback = await response.json()
           alert(feedback)
-          document.location.href = "/"
+          navigate("/")
         } catch (error) {
           alert(`Une  erreur s'est produite. Veuillez nous excuser`)
         }

@@ -30,12 +30,21 @@ import HomeKasa from "./pages/kasa/HomeKasa"
 import ErrorPage from "./pages/kasa/Errorpagekasa"
 import Login from "./pages/Login"
 import WholeSiteWrapper from "./components/WholeSiteWrapper"
+import Dashboard from "./pages/Dashboard"
+import FormDashboard from "./components/dashboard/formDashboard"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<WholeSiteWrapper />}>
+      {/* Private routes */}
+
+      <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/dashboard/:name" element={<FormDashboard />} />
+      </Route>
+
+      {/* Public routes */}
+
       <Route path="/login" element={<Login />} />
-      {/*     <Route path="/dashboard" element={<Dashboard />} />  */}
 
       <Route path="/" element={<Home />}>
         <Route path="/" element={<Landing />}>

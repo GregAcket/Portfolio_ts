@@ -65,13 +65,14 @@ export type lightboxPictureType = {
 
 export type Project = {
   id: number
-  name?: string
+  name: string
   urlScreenshot: string
   urlLogo: string
   altLogo: string
   colorUnderline: string
   title: string
   link: string
+  [k: string | number]: string | number
 }
 
 export type Kasa = {

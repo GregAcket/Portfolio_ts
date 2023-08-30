@@ -68,7 +68,7 @@ export default function Panthere() {
         <nav className="panthere_nav">
           <div className="panthere_nav_div">
             <Link
-              to={"/project/la_panthere"}
+              to={"/project/panthere"}
               className="panthere_a"
               onClick={goToHomepage}
             >
@@ -86,7 +86,7 @@ export default function Panthere() {
           <ul className={showNav}>
             <li className="panthere_li">
               <Link
-                to={"/project/la_panthere"}
+                to={"/project/panthere"}
                 className="panthere_a"
                 aria-label="Aller à la page d'accueil"
                 onClick={goToHomepage}
@@ -96,7 +96,7 @@ export default function Panthere() {
             </li>
             <li className="panthere_li">
               <Link
-                to={"/project/la_panthere"}
+                to={"/project/panthere"}
                 className="panthere_a"
                 aria-label="Aller à la page contact"
                 onClick={goToContactPage}
