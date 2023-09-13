@@ -1,8 +1,5 @@
 import express from "express"
 import { upload } from "../middleware/multer-config.js"
-
-// console.log(storage.getFilename())
-
 import {
   createProject,
   modifyProject,
