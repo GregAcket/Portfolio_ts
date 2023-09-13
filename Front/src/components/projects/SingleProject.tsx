@@ -65,7 +65,7 @@ const Logo = styled.img`
 
 const Title = styled.div`
   display: flex;
-  width: fit-content;
+  width: 135px;
   font-size: 16px;
   font-weight: 200;
   text-transform: uppercase;
@@ -142,7 +142,7 @@ export const SingleProject = ({ project }: SingleProjectProps) => {
     }
   }
 
-  let options = {
+  const options = {
     root: null,
     rootMargin: "0px",
     threshold: 0.15,

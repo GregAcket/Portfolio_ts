@@ -18,7 +18,9 @@ export default function Thumb() {
         const response = await fetch(url)
         const datas = await response.json()
         setAccommodations(datas)
-      } catch (error) {}
+      } catch (error) {
+        console.log(error)
+      }
     }
     fetchData()
   }, [url])

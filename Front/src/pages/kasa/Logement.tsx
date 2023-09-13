@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Kasa } from "../../utils/type"
 import Carroussel from "../../components/kasa/carroussel/Carroussel"
 import Dropdown from "../../components/kasa/dropdown/Dropdown"
 import Ratings from "../../components/kasa/ratings/Ratings"
 import "./logement.css"
-import { useEffect, useState } from "react"
-import { Kasa } from "../../utils/type"
 
 export default function Logement() {
   // STATE
@@ -13,7 +13,7 @@ export default function Logement() {
 
   // EFFECT
 
-  let { id } = useParams()
+  const { id } = useParams()
 
   const url = `http://localhost:8000/kasa/${id}`
 
@@ -23,21 +23,23 @@ export default function Logement() {
         const response = await fetch(url)
         const datas = await response.json()
         setAccommodation(datas)
-      } catch (error) {}
+      } catch (error) {
+        console.log(error)
+      }
     }
     fetchData()
   }, [url])
 
   if (accommodation !== undefined) {
-    let rentalEquipment = accommodation.equipments.map((equipment, index) => {
+    const rentalEquipment = accommodation.equipments.map((equipment, index) => {
       return <li key={index}>{equipment}</li>
     })
 
-    let pictures = accommodation.pictures.map((pics, index) => {
+    const pictures = accommodation.pictures.map((pics, index) => {
       return <img key={index} className="image" src={pics} alt="habitation" />
     })
 
-    let tags = accommodation.tags.map((tag, index) => {
+    const tags = accommodation.tags.map((tag, index) => {
       return (
         <p className="tag" key={index}>
           {tag}

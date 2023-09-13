@@ -31,6 +31,7 @@ export default function Kanapproduct() {
   const [isValidationMessageShown, setValidationMessage] = useState(false)
 
   //EFFECT
+
   const { id } = useParams()
 
   const url = `http://localhost:8000/kanap/${id}`
@@ -82,7 +83,7 @@ export default function Kanapproduct() {
       )
     }
     if (id) {
-      let selectedCanap: KanapCart = {
+      const selectedCanap: KanapCart = {
         id: id,
         quantity: selectedQuantity,
         couleur: selectedColor,
@@ -92,18 +93,18 @@ export default function Kanapproduct() {
         name: kanapData.name,
         price: kanapData.price,
       }
-      let canapline = JSON.stringify([selectedCanap])
+      const canapline = JSON.stringify([selectedCanap])
 
       const storedValue = localStorage.getItem("selectedCanap") as string
 
-      let verifyStorage: KanapCart[] = JSON.parse(storedValue)
+      const verifyStorage: KanapCart[] = JSON.parse(storedValue)
 
       //If storage doesn't exist
 
       if (verifyStorage !== null) {
         // we search if there is already a product with the same id and the same color
 
-        let findProduct = verifyStorage.find(
+        const findProduct = verifyStorage.find(
           (search) => search.id === id && search.couleur === selectedColor
         )
 
@@ -118,7 +119,7 @@ export default function Kanapproduct() {
             )
           }
 
-          let indexProduct = verifyStorage.indexOf(findProduct)
+          const indexProduct = verifyStorage.indexOf(findProduct)
 
           verifyStorage.splice(indexProduct, 1, selectedCanap)
 

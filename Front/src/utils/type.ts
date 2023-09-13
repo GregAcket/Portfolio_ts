@@ -1,12 +1,17 @@
 import { Dispatch, SetStateAction } from "react"
 
+export type User = {
+  authenticated: boolean
+  user: { userId: string | null; token: string } | null
+}
+
 export type ThemeProps = {
   $isDarkMode: boolean
   $isChecked?: boolean
 }
 
 export type IntroProps = {
-  setIsLoaded: Dispatch<SetStateAction<Boolean>>
+  setIsLoaded: Dispatch<SetStateAction<boolean>>
 }
 
 export type StyleProjectProps = {

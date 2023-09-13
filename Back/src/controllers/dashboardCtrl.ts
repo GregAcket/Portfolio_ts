@@ -4,14 +4,26 @@ import fs from "fs"
 
 export const createProject = async (req: Request, res: Response) => {
   const project = { ...req.body }
-  const newProject = new Project({ ...project })
+  console.log(req.file)
+  const newProject = new Project({
+    ...project,
+    urlScreenshot:
+      req.protocol + "://" + req.get("host") + "/images/" + req.file?.filename,
+    //    urlScreenshot: `${req.protocol}://${req.get("host")}/dist/images/${
+    //      req.file?.filename
+    //    }`,
+    //   urlLogo: `${req.protocol}://${req.get("host")}/dist/images/${
+    //     req.file?.filename
+    //   }`,
+    colorUnderline: req.body.colorUnderline + " " + "50%",
+  })
 
   newProject
     .save()
     .then(() => {
       res.status(201).json("Le nouveau projet à bien été créé")
     })
-    .catch((error) => res.status(400).json(error))
+    .catch((error) => res.status(400).json(error.message))
 }
 
 export const oneProject = async (req: Request, res: Response) => {

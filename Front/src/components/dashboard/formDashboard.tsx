@@ -3,6 +3,7 @@ import { useUser } from "../../utils/customHooks"
 import { ChangeEvent, useEffect, useState } from "react"
 import { Project } from "../../utils/type"
 import { styled } from "styled-components"
+import { deleteDatas, getOneProject, modifyDatas } from "../../utils/tools"
 
 const Div = styled.div`
   position: absolute;
@@ -27,7 +28,7 @@ const DivForm = styled.div`
   display: grid;
   grid-template-columns: 145px 1fr 35px;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   gap: 15px;
   margin-bottom: 15px;
 `
@@ -43,13 +44,27 @@ const Input = styled.input`
   }
 `
 
-const Svg = styled.svg`
-  width: 20px;
-  height: 20px;
+const Modify = styled.svg`
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 `
 
 const Path = styled.path`
   fill: green;
+`
+
+const Delete = styled.input`
+  background: red;
+  align-self: center;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  margin-top: 10px;
+  width: 135px;
+  height: 43px;
+  font-size: 18px;
+  cursor: pointer;
 `
 
 export default function FormDashboard() {
@@ -101,27 +116,20 @@ export default function FormDashboard() {
     }
   }, [userLoading])
 
-  const url = `http://localhost:8000/dashboard/${name}`
-
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(`token`)}`,
-          },
-        })
-        const dataJson: Project = await response.json()
-
-        setDisplay(dataJson)
-        setOrigin(dataJson)
-      } catch (err) {
-        console.log(err)
+    async function getProject() {
+      if (name !== undefined) {
+        const response = await getOneProject(name)
+        if (response) {
+          setDisplay(response)
+          setOrigin(response)
+        }
       }
     }
-    fetchData()
-  }, [url])
+    getProject()
+  }, [name])
+
+  // LOGIC
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (display !== undefined) {
@@ -132,10 +140,29 @@ export default function FormDashboard() {
     }
   }
 
+  const sendModification = async () => {
+    confirm("Voulez vous modifier le projet ?")
+    if (name !== undefined) {
+      const response = await modifyDatas(name, display)
+      alert(response)
+    }
+    navigate("/dashboard")
+  }
+
+  const deleteProject = async () => {
+    confirm("Voulez vous supprimer ce projet ?")
+    if (name !== undefined) {
+      const response = await deleteDatas(name)
+      alert(response)
+    }
+    navigate("/dashboard")
+  }
+
   const sliced = Object.entries(display).slice(2, 9)
 
   const fields = sliced.map(([k, v], index) => {
     const isFieldValueModified = v !== origin[k]
+
     return (
       <DivForm key={index}>
         <Label htmlFor={k}>{k} :</Label>
@@ -145,14 +172,14 @@ export default function FormDashboard() {
           value={v}
           onChange={(e) => handleChange(e)}
         />
-
-        <Svg
+        <Modify
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
-          style={{ opacity: isFieldValueModified ? 1 : 0 }}
+          style={{ display: isFieldValueModified ? "block" : "none" }}
+          onClick={() => sendModification()}
         >
           <Path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"></Path>
-        </Svg>
+        </Modify>
       </DivForm>
     )
   })
@@ -160,7 +187,14 @@ export default function FormDashboard() {
   return (
     <>
       {auth ? (
-        <Form>{fields}</Form>
+        <>
+          <Form>{fields}</Form>
+          <Delete
+            type="submit"
+            value="Supprimer"
+            onClick={() => deleteProject()}
+          />
+        </>
       ) : (
         <Div>
           <P>Pour accéder à cette page, vous devez vous identifier.</P>

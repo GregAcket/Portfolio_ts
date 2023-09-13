@@ -37,7 +37,7 @@ export default function Restaurant() {
     fetchData()
   }, [url])
 
-  let entrees = restauData?.entree.map((entree, index) => (
+  const entrees = restauData?.entree.map((entree, index) => (
     <li className="menu_card" key={index}>
       <div className="menu_content">
         <p className="menu_principal">{entree.principal}</p>
@@ -56,7 +56,7 @@ export default function Restaurant() {
     </li>
   ))
 
-  let plats = restauData?.plat.map((plat, index) => (
+  const plats = restauData?.plat.map((plat, index) => (
     <li className="menu_card" key={index}>
       <div className="menu_content">
         <p className="menu_principal">{plat.principal}</p>
@@ -75,7 +75,7 @@ export default function Restaurant() {
     </li>
   ))
 
-  let desserts = restauData?.dessert.map((dessert, index) => (
+  const desserts = restauData?.dessert.map((dessert, index) => (
     <li className="menu_card" key={index}>
       <div className="menu_content">
         <p className="menu_principal">{dessert.principal}</p>

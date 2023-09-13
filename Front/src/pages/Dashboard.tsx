@@ -5,6 +5,7 @@ import { Project, StyleProjectProps } from "../utils/type"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import TopHeader from "../components/header/TopHeader"
 import { useUser } from "../utils/customHooks"
+import { getAllProject } from "../utils/tools"
 
 const ProjectSection = styled.section<StyleProjectProps>`
   display: grid;
@@ -12,25 +13,72 @@ const ProjectSection = styled.section<StyleProjectProps>`
   margin-top: 50px;
   padding: 0px 15px;
 `
-const SideNav = styled.nav`
-  display: flex;
-  flex-direction: column;
-`
 
 const Section = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `
 
-const Li = styled.ul`
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`
+
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  background: green;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: background 300ms;
+  cursor: pointer;
+
+  &:before {
+    content: "+";
+    font-size: 40px;
+  }
+
+  &:hover {
+    background: #10bf41;
+  }
+`
+const P = styled.p`
+  margin: 5px 0px 15px;
+`
+
+const Ul = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
+`
+
+const Li = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   cursor: pointer;
+  padding: 10px 5px;
+  border-radius: 5px;
+  min-height: 50px;
+  transition: background 300ms;
+
+  &:hover {
+    background: #c6c6c6;
+  }
 `
 
 const Logo = styled.img`
   max-height: 100px;
   max-width: 100px;
-  margin-top: 10px;
 `
 
 const Div = styled.div`
@@ -41,7 +89,7 @@ const Div = styled.div`
   min-width: 300px;
 `
 
-const P = styled.p`
+const Redirect = styled.p`
   font-size: 22px;
   text-align: center;
   padding: 0px 15px;
@@ -63,26 +111,15 @@ export default function Dashboard() {
 
   // EFFECT
 
-  const url = "http://localhost:8000/projects"
-
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(`token`)}`,
-          },
-        })
-        const dataJson = await response.json()
-
-        setAllProjects(dataJson)
-      } catch (err) {
-        console.log(err)
+    async function getProjects() {
+      const response = await getAllProject()
+      if (response) {
+        setAllProjects(response)
       }
     }
-    fetchData()
-  }, [url])
+    getProjects()
+  }, [])
 
   // AUTH
 
@@ -100,7 +137,7 @@ export default function Dashboard() {
     const mapped = allProjects
       .map((p) => {
         return (
-          <Link to={`/dashboard/${p.name}`} key={p.id}>
+          <Link to={`/dashboard/${p.name}`} key={p.name}>
             <Li>
               <Logo src={p.urlLogo} alt={p.altLogo} />
             </Li>
@@ -118,17 +155,21 @@ export default function Dashboard() {
 
       {auth ? (
         <ProjectSection>
-          <SideNav>
-            <ul>{projects()}</ul>
-          </SideNav>
+          <Nav>
+            <Button onClick={() => navigate("/dashboard/new")} />
+            <P>New project</P>
+            <Ul>{projects()}</Ul>
+          </Nav>
           <Section>
             <Outlet />
           </Section>
         </ProjectSection>
       ) : (
         <Div>
-          <P>Pour accéder à cette page, vous devez vous identifier.</P>
-          <P>Vous allez être redirigé.</P>
+          <Redirect>
+            Pour accéder à cette page, vous devez vous identifier.
+          </Redirect>
+          <Redirect>Vous allez être redirigé.</Redirect>
         </Div>
       )}
     </>

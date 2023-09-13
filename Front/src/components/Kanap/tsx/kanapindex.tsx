@@ -25,7 +25,7 @@ export default function Kanapindex() {
     fetchData()
   }, [url])
 
-  let products = kanapData?.map((produit) => {
+  const products = kanapData?.map((produit) => {
     return (
       <Link to={"/project/kanap/" + produit.id} key={produit.id}>
         <article>
