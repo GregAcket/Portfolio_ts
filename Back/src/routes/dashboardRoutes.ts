@@ -1,4 +1,8 @@
 import express from "express"
+import { upload } from "../middleware/multer-config.js"
+
+// console.log(storage.getFilename())
+
 import {
   createProject,
   modifyProject,
@@ -9,7 +13,7 @@ import { auth } from "../middleware/auth.js"
 
 export const dashboardRoutes = express.Router()
 
-dashboardRoutes.post("/", auth, createProject)
+dashboardRoutes.post("/", auth, upload, createProject)
 dashboardRoutes.get("/:name", auth, oneProject)
-dashboardRoutes.put("/:name", auth, modifyProject)
+dashboardRoutes.put("/:name", auth, upload, modifyProject)
 dashboardRoutes.delete("/:name", auth, deleteProject)

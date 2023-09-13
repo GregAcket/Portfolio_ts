@@ -11,17 +11,17 @@ export default function Ratings({ rate }: RatingType) {
   const ratedStars = parseInt(rate)
   const unratedStars = totalStars - ratedStars
 
-  let starArray = []
+  const starArray = []
 
   for (let i = 0; i < ratedStars; i++) {
-    let redstar = (
+    const redstar = (
       <img className="rating" src={redStar} alt="Etoile de notation" key={i} />
     )
 
     starArray.push(redstar)
   }
   for (let i = 0; i < unratedStars; i++) {
-    let greystar = (
+    const greystar = (
       <img
         className="rating"
         src={greyStar}

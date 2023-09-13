@@ -153,7 +153,7 @@ export default function Projects() {
     changeProjectsWrapper,
   ])
 
-  let projects = allProjects
+  const projects = allProjects
     .map((project) => <SingleProject key={project.id} project={project} />)
     .reverse()
 

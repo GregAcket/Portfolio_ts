@@ -7,12 +7,12 @@ type CarrousselType = {
 }
 
 export default function Carroussel({ image }: CarrousselType) {
-  let [n, setn] = useState(0)
+  const [n, setn] = useState(0)
 
   if (n < 0) {
-    n = image.length - 1
+    setn(image.length - 1)
   } else if (n > image.length - 1) {
-    n = 0
+    setn(0)
   }
 
   return (

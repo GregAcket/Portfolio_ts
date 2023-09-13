@@ -5,22 +5,16 @@ import { ThemeProps } from "../../utils/type"
 import { ThemeContext } from "../../utils/ThemeProvider"
 import { useNavigate } from "react-router-dom"
 
+type MailAttribute = {
+  value: string
+  error?: string
+  isValid?: boolean
+}
+
 type MailForm = {
-  name: {
-    value: string
-    error?: string
-    isValid?: Boolean
-  }
-  email: {
-    value: string
-    error?: string
-    isValid?: Boolean
-  }
-  message: {
-    value: string
-    error?: string
-    isValid?: Boolean
-  }
+  name: MailAttribute
+  email: MailAttribute
+  message: MailAttribute
 }
 
 const ContactWrapperSection = styled.section`
@@ -53,6 +47,7 @@ const StyledForm = styled.form`
     margin-bottom: 5px;
   }
 `
+
 const FormId = styled.div`
   display: flex;
   flex-direction: column;
@@ -114,7 +109,6 @@ const Envoyer = styled.input`
   width: 135px;
   height: 43px;
   font-size: 18px;
-  transition: all 300ms;
   cursor: pointer;
 `
 const ErrorMsg = styled.p`
@@ -136,6 +130,7 @@ const Textarea = styled.textarea<ThemeProps>`
     color: transparent;
   }
 `
+
 const Labeltextarea = styled.label`
   position: relative;
   bottom: 220px;
@@ -174,7 +169,6 @@ export default function Contact() {
 
   //Regex and form validation
 
-  ;/^[a-zA-ZÉÈéèç/ñ\-\s]{2,}$/
   const regexNom = /^[a-zA-ZÉÈéèç/ñ\-\s]{2,}$/
   const regexMail = /^[a-zA-Z0-9.é_ñèç%+-]+@[a-zA-Z0-9ñ.-]+\.[a-zA-Zñ]{2,}$/
   const regexMessage = /^[a-zA-Z0-9,.'!?ÉÈéêèçà/ñ\-\s]{10,}$/

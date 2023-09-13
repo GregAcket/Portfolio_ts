@@ -21,15 +21,17 @@ const Lightbox = ({
   whichPicture,
   pantherePics,
 }: LightboxPropsType) => {
-  const showOrHideBox = show
-    ? "panthere_lightbox panthere_lightbox_show"
-    : "panthere_lightbox panthere_lightbox_hide"
+  // STATE
 
   const [picture, setPicture] = useState<lightboxPictureType>({})
+
+  // EFFECT
 
   useEffect(() => {
     setPicture(whichPicture)
   }, [whichPicture])
+
+  // LOGIC
 
   function increase() {
     let number = picture.id
@@ -39,11 +41,15 @@ const Lightbox = ({
         number = 0
       }
     }
-    let check = pantherePics.find((search) => search.id === number)
+    const check = pantherePics.find((search) => search.id === number)
     if (check !== undefined) {
       setPicture(check)
     }
   }
+
+  const showOrHideBox = show
+    ? "panthere_lightbox panthere_lightbox_show"
+    : "panthere_lightbox panthere_lightbox_hide"
 
   function decrease() {
     let number = picture.id
@@ -53,7 +59,7 @@ const Lightbox = ({
         number = pantherePics.length - 1
       }
     }
-    let check = pantherePics.find((search) => search.id === number)
+    const check = pantherePics.find((search) => search.id === number)
     if (check !== undefined) {
       setPicture(check)
     }

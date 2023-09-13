@@ -37,11 +37,11 @@ export default function PanthereMain({ goToContactPage }: PanthereProps) {
 
   // LOGIC
 
-  let hideLightbox = () => {
+  const hideLightbox = () => {
     setLightbox(false)
   }
 
-  let showLightbox = (e: MouseEvent<HTMLAnchorElement>) => {
+  const showLightbox = (e: MouseEvent<HTMLAnchorElement>) => {
     const target = e.target as HTMLElement
     const grab = target.closest(".panthere_bloc4_article")
 
@@ -58,7 +58,7 @@ export default function PanthereMain({ goToContactPage }: PanthereProps) {
     }
   }
 
-  let Article = pantherePics.map((image) => {
+  const Article = pantherePics.map((image) => {
     return (
       <article
         className="panthere_bloc4_article"

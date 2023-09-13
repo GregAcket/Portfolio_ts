@@ -7,7 +7,7 @@ import ScrollToTop from "./components/Scrolltotop"
 import Header from "./components/header/Header"
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState<Boolean>(false)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   return (
     <>

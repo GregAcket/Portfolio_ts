@@ -5,32 +5,18 @@ import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from "react"
 import { KanapCart } from "../../../utils/type"
 import { useNavigate } from "react-router-dom"
 
+type FormAttribute = {
+  value: string
+  error?: string
+  isValid?: boolean
+}
+
 type FormType = {
-  firstName: {
-    value: string
-    error?: string
-    isValid?: boolean
-  }
-  lastName: {
-    value: string
-    error?: string
-    isValid?: boolean
-  }
-  address: {
-    value: string
-    error?: string
-    isValid?: boolean
-  }
-  city: {
-    value: string
-    error?: string
-    isValid?: boolean
-  }
-  email: {
-    value: string
-    error?: string
-    isValid?: boolean
-  }
+  firstName: FormAttribute
+  lastName: FormAttribute
+  address: FormAttribute
+  city: FormAttribute
+  email: FormAttribute
 }
 
 export default function Kanappanier() {
@@ -61,21 +47,21 @@ export default function Kanappanier() {
 
   // Update total quantity
 
-  let totalProduct = () => storage.reduce((a, b) => a + b.quantity, 0)
+  const totalProduct = () => storage.reduce((a, b) => a + b.quantity, 0)
 
   const [totalQuantity, setTotalQuantity] = useState(totalProduct())
 
   // Delete item and update display on clic
 
   const handleDeletion = (e: MouseEvent<HTMLParagraphElement>) => {
-    let target = e.target as HTMLElement
-    let itemToDelete = target.closest(".cart__item")
+    const target = e.target as HTMLElement
+    const itemToDelete = target.closest(".cart__item")
 
     if (itemToDelete) {
       const idItem = itemToDelete.getAttribute("data-id")
       const colorItem = itemToDelete.getAttribute("data-color")
       if (idItem && colorItem) {
-        let checkIndexItem = storage.findIndex(
+        const checkIndexItem = storage.findIndex(
           (search) => search.id === idItem && search.couleur === colorItem
         )
         if (checkIndexItem !== -1) {
@@ -100,11 +86,11 @@ export default function Kanappanier() {
   const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value)
 
-    let getCorrectCanap = e.target.closest(".cart__item")
+    const getCorrectCanap = e.target.closest(".cart__item")
     const idCanap = getCorrectCanap?.getAttribute("data-id")
     const couleurCanap = getCorrectCanap?.getAttribute("data-color")
 
-    let checkCorrectCanap = storage.find(
+    const checkCorrectCanap = storage.find(
       (search) => search.id === idCanap && search.couleur === couleurCanap
     )
 
@@ -127,8 +113,8 @@ export default function Kanappanier() {
 
   // Update total price
 
-  let updateTotalPrice = () => {
-    let price = document.querySelectorAll(
+  const updateTotalPrice = () => {
+    const price = document.querySelectorAll(
       ".cart__item__content__description p:nth-child(3)"
     )
 
@@ -136,23 +122,23 @@ export default function Kanappanier() {
 
     price.forEach((prix) => {
       if (prix.textContent !== null) {
-        let canapPrice = parseInt(prix.textContent)
+        const canapPrice = parseInt(prix.textContent)
 
-        let research = prix.closest(".cart__item")
+        const research = prix.closest(".cart__item")
 
-        let idResearch = research?.getAttribute("data-id")
-        let colorResearch = research?.getAttribute("data-color")
+        const idResearch = research?.getAttribute("data-id")
+        const colorResearch = research?.getAttribute("data-color")
 
-        let checkItem = storage.find(
+        const checkItem = storage.find(
           (search) =>
             search.id === idResearch && search.couleur === colorResearch
         )
         if (checkItem !== undefined) {
-          let totalPricePerCanap = canapPrice * checkItem.quantity
+          const totalPricePerCanap = canapPrice * checkItem.quantity
 
           finalPrice = finalPrice + totalPricePerCanap
 
-          let totalPriceNodes = document.querySelector(
+          const totalPriceNodes = document.querySelector(
             "#totalPrice"
           ) as HTMLElement
 
@@ -162,7 +148,7 @@ export default function Kanappanier() {
         }
 
         if (storage.length < 1) {
-          let totalPriceNodes = document.querySelector(
+          const totalPriceNodes = document.querySelector(
             "#totalPrice"
           ) as HTMLElement
           totalPriceNodes.innerText = "0"
@@ -320,12 +306,12 @@ export default function Kanappanier() {
     } else if (!isFormValid) {
       alert("Il y a une erreur dans le remplissage de votre formulaire")
     } else {
-      let productIdArray = []
-      for (let ids of storage) {
+      const productIdArray = []
+      for (const ids of storage) {
         productIdArray.push(ids.id)
       }
 
-      let order = {
+      const order = {
         contact: form,
         products: productIdArray,
       }

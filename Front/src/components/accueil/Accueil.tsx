@@ -42,7 +42,7 @@ const StyledH1 = styled.h1<ThemeProps>`
 export default function Accueil() {
   //  REF
 
-  let title = useRef<HTMLHeadingElement>(null)
+  const title = useRef<HTMLHeadingElement>(null)
 
   // STATE
 
@@ -55,13 +55,13 @@ export default function Accueil() {
   // LOGIC
 
   // Typing effect
-  let h1 = "Développeur Web React / Node.js"
+  const h1 = "Développeur Web React / Node.js"
 
-  let speed = 45
+  const speed = 45
 
   function effect(sentence: string, ref: RefObject<HTMLElement>, time: number) {
     let i = 0
-    let timer = setInterval(() => {
+    const timer = setInterval(() => {
       if (ref.current !== null && ref.current.innerHTML !== undefined)
         if (
           i < sentence.length &&

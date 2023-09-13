@@ -40,22 +40,22 @@ export default function Panthere() {
 
   const [isNavShown, setNav] = useState(false)
 
-  let goToContactPage = () => {
+  const goToContactPage = () => {
     setIsHomePage(false)
     setTimeout(() => {
       scroll()
     }, 400)
   }
 
-  let goToHomepage = () => {
+  const goToHomepage = () => {
     setIsHomePage(true)
   }
 
-  let showOrHideNav = () => {
+  const showOrHideNav = () => {
     setNav(!isNavShown)
   }
 
-  let showNav = isNavShown ? "panthere_ul" : "panthere_ul hide_ul"
+  const showNav = isNavShown ? "panthere_ul" : "panthere_ul hide_ul"
 
   const target = document.querySelector(".panthere_header")
   const scroll = () => {
